@@ -28,8 +28,8 @@ class Program
             }
         }
 
-        Code code = new Code();
-        Game game = new Game(code.Secret, maxAttempts);
+        var code = new Code(codeInput);
+        var game = new Game(code.Secret, maxAttempts);
         game.Start();
     }
 }
