@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savvy-Skills-Assessment", "Savvy-Skills-Assessment\Savvy-Skills-Assessment.csproj", "{286C5021-53BF-4733-A60D-245F2C1BE216}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{286C5021-53BF-4733-A60D-245F2C1BE216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286C5021-53BF-4733-A60D-245F2C1BE216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286C5021-53BF-4733-A60D-245F2C1BE216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286C5021-53BF-4733-A60D-245F2C1BE216}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
