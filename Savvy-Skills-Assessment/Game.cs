@@ -13,12 +13,13 @@ public class Game
 
     public void Start()
     {
+        int attempts = 0;
         Console.WriteLine("Can you break the code?");
         Console.WriteLine("Enter your guess:");
 
-        for (int attempt = 1; attempt < _maxAttempts; attempt++)
+        while (attempts < _maxAttempts)
         {
-            Console.WriteLine($"\nAttempt: {attempt} / {_maxAttempts}: ");
+            Console.WriteLine($"\nAttempt: {attempts} / {_maxAttempts}: ");
             string? guess = Console.ReadLine();
 
             if (guess == null)
@@ -31,6 +32,8 @@ public class Game
             {
                 continue;
             }
+
+            attempts++;
             int wellPlaced = CountWellPlaced(guess , _secretCode);
             int missPlaced = CountMisplaced(guess , _secretCode);
 

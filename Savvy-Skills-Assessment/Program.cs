@@ -6,10 +6,30 @@ class Program
 {
     static void Main(string[] args)
     {
-        string code = "1234";
-        int maxAttempts = 5;
-        
-        Game game = new Game(code, maxAttempts);
+        int maxAttempts = 10;
+        string? codeInput = null;
+        for (int i = 0; i < args.Length; i++)
+        {
+            switch (args[i])
+            {
+                case "-c" :
+                    if (i+1 < args.Length)
+                        codeInput = args[++i];
+                    break;
+                case "-t":
+                    if (i+1 < args.Length && int.TryParse(args[++i], out int userAttempts))
+                    {
+                        maxAttempts = userAttempts;
+                        i++;
+                    }
+                    break;
+                    
+                    
+            }
+        }
+
+        Code code = new Code();
+        Game game = new Game(code.Secret, maxAttempts);
         game.Start();
     }
 }
