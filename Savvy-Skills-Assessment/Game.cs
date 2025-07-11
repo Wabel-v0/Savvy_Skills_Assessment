@@ -2,53 +2,40 @@ namespace Savvy_Skills_Assessment;
 
 public class Game
 {
-    private readonly string _secretCode;
+    private  Code _code { get; }
     private readonly int _maxAttempts;
-
-    public Game(string secretCode, int maxAttempts)
-    {
-        _secretCode = secretCode;
-        _maxAttempts = maxAttempts;
-    }
-
-    public void Start()
-    {
-        int attempts = 0;
-        Console.WriteLine("Can you break the code?");
-        Console.WriteLine("Enter your guess:");
-
-        while (attempts < _maxAttempts)
-        {
-            Console.WriteLine($"\nAttempt: {attempts} / {_maxAttempts}: ");
-            string? guess = Console.ReadLine();
-
-            if (guess == null)
-            {
-                Console.WriteLine("\nEnd of input. Exiting...");
-                return;
-            }
-
-            var playerGuess = new PlayerGuess(guess);
-            if (!playerGuess.IsValid)
-            {
-                continue;
-            }
-
-            var feadback = new Feedback(playerGuess.Value, _secretCode);
-            
-
-            if (feadback.WellPlaced == 4)
-            {
-                Console.WriteLine("Congratz! You did it!");
-                return;
-            }
-            Console.WriteLine($"Well placed: {feadback.WellPlaced}. Miss placed: {feadback.Misplaced}");
-            attempts++;
-        }
-        Console.WriteLine("\nGame Over. Better luck next time!");
-        Console.WriteLine($"The secret code was: {_secretCode}");
-    }
+    private List<(string Guess, Feedback Result)> _history;
     
+    public bool IsOver => _history.Count >= _maxAttempts || HasWon;
+    public bool HasWon { get; private set; }
+    public int RemainingAttempts => _maxAttempts - _history.Count;
+    public string SecretCode => _code.Secret;
 
-   
+    public IReadOnlyList<(string Guess, Feedback Result)> History => _history;
+
+    public Game(string? code = null, int maxAttempts = 10)
+    {
+        _code = new Code(code);
+        _maxAttempts = maxAttempts;
+        _history = new List<(string, Feedback)>();
+        HasWon = false;    
+    }
+
+    public (bool Success, string ErorrMsg) SubmitGuess(string guess)
+    {
+        var playerGuess = new PlayerGuess(guess);
+        if (!playerGuess.IsValid)
+        {
+            return (false, playerGuess.ErrorMessage);
+        }
+
+        var feedback = new Feedback(playerGuess.Value, _code.Secret);
+        _history.Add((playerGuess.Value, feedback));
+
+        if (feedback.WellPlaced == 4)
+        {
+            HasWon = true;
+        }
+        return (true,"");
+    }
 }

@@ -7,6 +7,7 @@ public class PlayerGuess
     public bool IsValid { get; private set; }
 
     public string Value { get; private set; } = string.Empty;
+    public string ErrorMessage { get; private set; } = "";
 
     public PlayerGuess(string input)
     {
@@ -15,23 +16,25 @@ public class PlayerGuess
         
     }
 
-    private void Validate()
+    private string Validate()
     {
         IsValid = true;
         if (_input.Length !=4)
         {
-            Console.WriteLine("\nEnter 4 digit numbers");
             IsValid = false;
+            return ErrorMessage = "Enter 4 digit numbers";
         }
         foreach (char c in _input)
         {
             if (c < '0' || c > '8')
             {
-                Console.WriteLine("\nEnter number between 0 and 8");
                 IsValid = false;
+                return ErrorMessage= "Enter number between 0 and 8";
             }
             
         }
+        ErrorMessage = "";
         Value = _input;
+        return Value;
     }
 }
