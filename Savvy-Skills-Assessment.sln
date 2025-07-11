@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savvy-Skills-Assessment", "Savvy-Skills-Assessment\Savvy-Skills-Assessment.csproj", "{286C5021-53BF-4733-A60D-245F2C1BE216}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mastermind", "mastermind\mastermind.csproj", "{286C5021-53BF-4733-A60D-245F2C1BE216}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

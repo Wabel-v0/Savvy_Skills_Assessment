@@ -12,7 +12,6 @@ public class ConsoleGameRunner : ModeRunner
     {
         Console.WriteLine("Can you break the code?");
         Console.WriteLine("Enter your guess:");
-        Console.WriteLine(_game.IsOver);
         while (!_game.IsOver)
         {
             Console.WriteLine($"Remaining Attempts :{_game.RemainingAttempts}");
